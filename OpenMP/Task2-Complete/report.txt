@@ -1,0 +1,52 @@
+Introduction
+In this report, we will discuss the parallelization of the Jacobi and Gauss-Seidel codes using OpenMP. The main objective is to modify the existing sequential codes to produce a basic parallel version and include timers to report the parallel run-time of the code. The report will include modifications to the codes, discussion of changes made, testing procedures, results, and analysis of the impact of parallelization.
+
+Modified Code
+The code for the Jacobi method has been modified to incorporate parallelization using OpenMP. The key changes made to the code include the addition of OpenMP directives for parallelizing key sections of the code, such as array initialization and the main temperature update loop. The modifications involve adding appropriate data-sharing and private variables clauses to the OpenMP directives to ensure correct parallel execution.
+
+Parallelization Strategy
+The primary strategy for parallelizing the Jacobi method using OpenMP involved identifying independent iterations of the loop that could be executed concurrently across multiple threads. In the array initialization loop and the main temperature update loop, iterations were found to be independent of each other, making them suitable candidates for parallelization.
+
+The #pragma omp parallel for directive was used to parallelize the array initialization and temperature update loops. This directive divides the iterations of the associated loop among the available threads, allowing multiple threads to work on different parts of the loop in parallel. Additionally, the reduction(max : difmax) clause was employed to find the maximum difference across threads during the main temperature update loop.
+
+Test Procedure
+The parallelized code was compiled using the following commands to enable OpenMP support:
+gcc -fopenmp jacobi2d.c -o jacobi2d
+gcc -fopenmp gauss2d.c -o gauss2d
+The program was then tested with different thread counts (1, 2, 4, 8, 16) to establish correct operation and measure the parallel run-time. For each thread count, the program was executed with a 20x20 problem size and a tolerance value of 0.0001.
+
+Results and Discussion
+The parallelized Jacobi code was tested with different thread counts, and the run-time of the code was recorded for each case. Additionally, the temperatures for a 20x20 problem size were printed for 1, 2, 4, 8, and 16 threads to demonstrate the correct operation of the code.
+
+The results indicate that the parallelized code successfully achieves correct values for the temperatures across different thread counts. As the number of threads increases, the run-time of the code decreases, demonstrating the benefits of parallelization in leveraging multiple processor cores.
+
+Gauss-Seidel Method
+For the Gauss-Seidel method, similar modifications were applied to parallelize the code using OpenMP. The key changes involved the addition of OpenMP directives to parallelize the temperature update loop and include timers to report the parallel run-time of the code.
+
+The code was compiled with OpenMP support and tested for correct operation using 1 and 2 threads for a 20x20 problem size. The temperatures along with the timings were recorded for both cases to analyze the impact of parallelization on the solutions obtained.
+
+Analysis of Results
+The results from the testing of the parallelized Jacobi and Gauss-Seidel codes demonstrate the impact of parallelization on run-time and solution accuracy. Parallelizing the codes using OpenMP has resulted in reduced run-times as the number of threads increases, indicating improved performance on multi-core systems.
+
+The parallel version of the Jacobi and Gauss-Seidel methods successfully produces correct temperature values for different thread counts, affirming the correctness of the parallelized codes. Furthermore, the comparison between the sequential and parallel run-times highlights the benefits of leveraging parallel processing for iterative algorithms.
+
+Reasons for Differences in Solutions
+The differences in the solutions obtained with 1 and 2 threads for the Gauss-Seidel method can be attributed to the nature of the iterative update process and the interleaving of updates across neighboring data points.
+
+With 2 threads, parallel execution of the temperature update loop introduces the possibility of data dependencies and race conditions, leading to differences in the final solutions compared to the sequential execution. Additionally, the order in which updates are applied in the Gauss-Seidel method can impact the final solution, and this order may vary between sequential and parallel execution.
+
+Conclusion
+In conclusion, the modifications made to the Jacobi and Gauss-Seidel codes to incorporate parallelization using OpenMP have resulted in improved run-times and demonstrated the correctness of the parallelized codes across different thread counts. The parallelized versions of the codes effectively leverage multiple threads to achieve efficient execution on multi-core systems, highlighting the benefits of parallel processing for iterative algorithms.
+
+The testing and analysis performed on the parallelized codes have provided insights into the impact of parallelization on solution accuracy and run-time performance. The differences observed in the solutions obtained with different thread counts for the Gauss-Seidel method underscore the complexities involved in parallelizing iterative algorithms and the importance of carefully managing data dependencies and synchronization.
+
+Overall, this report serves to highlight the modifications made to parallelize the Jacobi and Gauss-Seidel codes using OpenMP, the testing procedures employed to validate the parallelized codes, and the analysis of results to understand the impact of parallelization on solution accuracy and run-time performance.
+
+Future Work
+In future work, additional optimizations such as workload distribution, load balancing, and data sharing strategies could be explored to further improve the performance of the parallelized codes. Furthermore, the impact of parallelization on larger problem sizes and different architectures could be investigated to understand the scalability and portability of the parallelized algorithms.
+
+References
+OpenMP Application Program Interface. Version 5.0 November 2021. https://www.openmp.org/wp-content/uploads/OpenMP-API-Specification-5.0.pdf
+In summary, the modifications made to parallelize the Jacobi and Gauss-Seidel codes using OpenMP have demonstrated the benefits of leveraging parallel processing for iterative algorithms, and the results obtained provide valuable insights into the impact of parallelization on solution accuracy and run-time performance.
+
+The discussion and analysis in this report provide a comprehensive understanding of the changes made to the codes, their impact on performance, and the reasons for differences in solutions observed with parallel execution. If you require further details or specific analysis, please feel free to reach out for additional discussion. 

@@ -1,0 +1,33 @@
+Abstract:
+This report presents the modification and enhancement of a C program to compute the temperature distribution for a 2D heat conduction problem, with specific boundary conditions and the capability to handle a range of problem sizes. The modifications involve adjusting the boundary conditions as per the specified requirements and implementing the flexibility to simulate heat conduction for varying grid dimensions. This report highlights the rationale behind each modification, while emphasizing the significance of these changes in achieving a more robust and versatile simulation platform for 2D heat conduction problems.
+
+Introduction:
+The original program was designed to compute the temperature distribution for a 2D heat conduction problem using the iterative relaxation method. While the original implementation provided a fundamental simulation framework, it did not account for specific boundary conditions or cater to varying problem sizes. This report delves into the modifications made to the original code, the rationale behind these changes, and the impact they have on the program's capabilities.
+
+Adjusting Boundary Conditions:
+The specified requirements demanded specific boundary conditions for the 2D heat conduction simulation, with temperatures of 10°C at the top, 30°C at the bottom, 40°C on the left, and 50°C on the right. To accommodate these requirements, the boundary conditions within the code were adjusted as follows:
+
+// Set boundary conditions
+for (int i = 0; i < m+2; i++) {
+    t[i][0] = 40.0;    // Left
+    t[i][n+1] = 50.0;  // Right
+}
+for (int j = 0; j < n+2; j++) {
+    t[0][j] = 10.0;    // Top
+    t[m+1][j] = 30.0;  // Bottom
+}
+This adjustment ensures that the boundary conditions align with the specified temperatures, thus accurately simulating the 2D heat conduction scenario within the defined boundaries.
+
+Implementing Varying Problem Sizes:
+Another crucial modification involved enabling the program to handle varying problem sizes, allowing for flexibility in grid dimensions for the heat conduction simulation. To achieve this, the code was adjusted to accept input arguments representing the dimensions of the grid and the tolerance for convergence. Furthermore, the initialization of the temperature array and the boundary conditions were dynamically adjusted based on the input dimensions, providing the required flexibility to simulate heat conduction for a range of problem sizes.
+
+Impact and Significance:
+These modifications have significant implications for the versatility and applicability of the program. By accommodating specific boundary conditions and varying problem sizes, the program becomes a more robust and adaptable tool for simulating 2D heat conduction scenarios in diverse real-world applications. The ability to tailor the boundary conditions and problem sizes enhances the program's utility in simulating heat conduction in scenarios where such flexibility is essential.
+
+Conclusion:
+The modifications made to the original code have effectively transformed the program into a more powerful and flexible tool for simulating 2D heat conduction problems. By adjusting the boundary conditions to meet specific requirements and enabling the handling of varying problem sizes, the program now offers enhanced capabilities and applicability in diverse simulation scenarios. These modifications represent a significant step toward creating a more versatile and robust platform for simulating 2D heat conduction, with potential applications across various scientific and engineering domains.
+
+Future Work:
+Moving forward, additional enhancements could be made to further extend the capabilities of the program. This may include incorporating additional boundary condition options, optimizing the convergence algorithm for larger problem sizes, and introducing visualization capabilities to analyze and interpret the temperature distributions. These future developments aim to elevate the program's utility and usability for researchers and engineers engaging in 2D heat conduction simulations.
+
+In conclusion, the modifications made to the original code have culminated in a program that is more well-equipped to handle the requirements of simulating 2D heat conduction problems with specific boundary conditions and varying problem sizes. These changes represent a significant improvement in the program's capabilities, underscoring its potential utility in a multitude of scientific and engineering applications.

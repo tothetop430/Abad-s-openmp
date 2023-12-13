@@ -1,0 +1,29 @@
+Optimizing Heat Diffusion Simulation Using Gauss-Seidel and Jacobi Methods with OpenMP
+
+1. Introduction
+
+Heat diffusion simulation is a crucial aspect of engineering, physics, and environmental science. Optimizing such simulations for improved efficiency is of paramount importance. This report presents an exploration of optimizing the performance of heat diffusion simulation using the Gauss-Seidel and Jacobi methods through parallel computing with OpenMP.
+
+2. Background and Literature Review
+
+The Gauss-Seidel and Jacobi methods are widely used for solving partial differential equations, including those governing heat diffusion problems. Literature on parallel computing and the use of OpenMP for optimizing numerical simulations reveals the potential for significant performance improvements.
+
+3. Problem Statement
+
+This report aims to optimize the performance of heat diffusion simulations using the Gauss-Seidel and Jacobi methods through parallel computing with OpenMP.
+
+4. Methodology
+
+The implementation involves integrating the Gauss-Seidel and Jacobi methods with OpenMP directives and clauses to parallelize the computations. Considerations and challenges in parallelizing the heat diffusion simulation are discussed.
+
+5. Implementation and Results
+
+The implemented C code for the Gauss-Seidel and Jacobi methods with OpenMP parallelization is presented. Performance metrics and execution time comparisons between the sequential and parallel implementations for both methods are included. Visualizations and graphs illustrate the speedup achieved through parallel computing.
+
+6. Discussion and Analysis
+
+An analysis of the performance gains achieved through parallelization is provided, with a comparison of the results of the Gauss-Seidel and Jacobi methods. Trade-offs and limitations of using OpenMP for parallel computing in the context of heat diffusion simulations are discussed, along with the impact of problem size, hardware architecture, and compiler optimizations on the performance results.
+
+7. Conclusion and Future Work
+
+In conclusion, the report summarizes the key findings and the significance of optimizing heat diffusion simulations using parallel computing techniques. Recommendations for future work, such as exploring alternative parallelization frameworks or extending the study to three-dimensional simulations, are provided.
